@@ -15,15 +15,14 @@ if (-not $gitCmd) {
         $gitCmd = Get-Command git -ErrorAction SilentlyContinue
     }
 }
-
-Write-Host "[1/3] Git is installed and ready: $($gitCmd.Source)" -ForegroundColor Green
-Write-Host ""
+Write-Host "[1/3] Git is ready: $($gitCmd.Source)" -ForegroundColor Green
 
 # Ensure Git user config is set
 & git config --global user.name "AdamBarfii"
 & git config --global user.email "AdamBarfii@users.noreply.github.com"
+Write-Host ""
 
-# 2. Check & Refresh GitHub Authentication
+# 2. Check GitHub Authentication
 $ghPath = "C:\Program Files\GitHub CLI\gh.exe"
 if (-not (Test-Path $ghPath)) {
     $foundGh = Get-Command gh -ErrorAction SilentlyContinue
@@ -44,30 +43,45 @@ if ($ghPath) {
 if (-not $authOk) {
     Write-Host ""
     Write-Host "========================================================" -ForegroundColor Cyan
-    Write-Host "  ACTION REQUIRED: Re-authenticating your GitHub account" -ForegroundColor Cyan
+    Write-Host "  GitHub Authentication Required" -ForegroundColor Cyan
     Write-Host "========================================================" -ForegroundColor Cyan
-    Write-Host "A one-time code will appear below and your browser will open." -ForegroundColor White
-    Write-Host "Please confirm the authorization in your browser." -ForegroundColor White
+    Write-Host "Choose how you would like to authenticate:" -ForegroundColor White
+    Write-Host "  [1] Open Device Login in Browser (Default)" -ForegroundColor Yellow
+    Write-Host "  [2] Paste a Personal Access Token (Classic / Fine-grained)" -ForegroundColor Yellow
     Write-Host ""
     
-    # Try refresh first, fallback to login
-    & $ghPath auth refresh -h github.com
-    if ($LASTEXITCODE -ne 0) {
+    $choice = Read-Host "Enter option (1 or 2) [Default: 1]"
+    if ([string]::IsNullOrWhiteSpace($choice)) { $choice = "1" }
+    
+    if ($choice -eq "2") {
+        Write-Host ""
+        Write-Host "Create a token with 'repo' scope at: https://github.com/settings/tokens" -ForegroundColor Cyan
+        Start-Process "https://github.com/settings/tokens/new?scopes=repo&description=PC-Tweak-CLI"
+        $token = Read-Host "Paste your GitHub Token here"
+        if (-not [string]::IsNullOrWhiteSpace($token)) {
+            $token.Trim() | & $ghPath auth login --with-token
+            Write-Host "Token submitted." -ForegroundColor Green
+        }
+    } else {
+        Write-Host ""
+        Write-Host "Attempting to open https://github.com/login/device in your browser..." -ForegroundColor Cyan
+        Start-Process "https://github.com/login/device"
+        Write-Host "If the browser still does not open, visit: https://github.com/login/device" -ForegroundColor Yellow
+        Write-Host ""
         & $ghPath auth login -w -p https -h github.com
     }
 }
 
 Write-Host ""
-Write-Host "[2/3] GitHub credentials ready." -ForegroundColor Green
+Write-Host "[2/3] GitHub credentials verified." -ForegroundColor Green
 Write-Host ""
 
 # 3. Create Remote and Push
-Write-Host "[3/3] Creating and pushing repository 'PC-Tweak' to GitHub..." -ForegroundColor Yellow
+Write-Host "[3/3] Publishing repository to your GitHub account..." -ForegroundColor Yellow
 
 # Ensure main branch is active
 & git branch -M main
 
-# Check if origin remote already exists
 $remotes = & git remote
 if ($remotes -match "origin") {
     Write-Host "Remote 'origin' exists. Pushing main branch..." -ForegroundColor Yellow
@@ -85,8 +99,7 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "Check your repository at: https://github.com/AdamBarfii/PC-Tweak" -ForegroundColor Cyan
 } else {
     Write-Host ""
-    Write-Host "[!] Push completed with warnings or repository already exists." -ForegroundColor Yellow
-    Write-Host "Trying direct push to origin main..." -ForegroundColor Yellow
+    Write-Host "[!] Repository created or already exists. Performing direct push..." -ForegroundColor Yellow
     & git push -u origin main
 }
 
