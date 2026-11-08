@@ -551,6 +551,8 @@ export interface NetworkModuleOverview {
 export interface DnsPreset {
   id: string;
   name: string;
+  category?: 'iranian' | 'global' | 'custom';
+  description?: string;
   primaryIpv4: string;
   secondaryIpv4?: string;
   primaryIpv6?: string;
@@ -1359,7 +1361,7 @@ export interface OverclockCapabilities {
   minMemOffsetMhz: number; // e.g. 0
   maxPowerLimitPct: number; // Safe clamp: e.g. 105
   minPowerLimitPct: number; // Safe clamp: e.g. 100
-  tempTripwireGpu: number; // 80°C
+  tempTripwireGpu: number; // 85°C
   tempTripwireCpu: number; // 85°C
   isInMemoryOnly: boolean; // Always true: Boot-loop immunity
   unsupportedReason?: string;

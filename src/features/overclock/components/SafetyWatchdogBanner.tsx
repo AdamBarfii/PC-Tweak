@@ -36,7 +36,7 @@ export const SafetyWatchdogBanner: React.FC<SafetyWatchdogBannerProps> = ({
             <p className="text-xs text-muted-foreground mt-0.5 max-w-2xl leading-relaxed">
               {t(
                 'overclock.safety.description',
-                'Offsets run purely in active memory with locked voltage (+0 mV). In the event of high temperatures (>80°C) or driver recovery, settings automatically revert to factory stock.'
+                'Offsets run purely in active memory with locked voltage (+0 mV). In the event of high temperatures (>85°C) or driver recovery, settings automatically revert to factory stock.'
               )}
             </p>
 
@@ -52,7 +52,7 @@ export const SafetyWatchdogBanner: React.FC<SafetyWatchdogBannerProps> = ({
               </span>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-black/40 text-muted-foreground border border-white/5">
                 <AlertCircle className="w-3 h-3 text-amber-400" />
-                {t('overclock.safety.thermalCeiling', 'Thermal Tripwire: 80°C GPU / 85°C CPU')}
+                {t('overclock.safety.thermalCeiling', 'Thermal Tripwire: 85°C GPU / 85°C CPU')}
               </span>
               {rollbackCount > 0 && (
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30">

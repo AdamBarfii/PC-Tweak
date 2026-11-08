@@ -14,7 +14,7 @@ export const OverclockAnalytics: React.FC<OverclockAnalyticsProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const headroom = analytics?.thermalHeadroomC ?? Math.max(0, 80 - currentTemp);
+  const headroom = analytics?.thermalHeadroomC ?? Math.max(0, 85 - currentTemp);
   const stability = analytics?.siliconStabilityIndex ?? 100;
   const fpsGain = analytics?.estimatedFpsGainPct ?? 0;
   const bandwidthDelta = analytics?.memoryBandwidthDeltaGbps ?? 0;
@@ -68,7 +68,7 @@ export const OverclockAnalytics: React.FC<OverclockAnalyticsProps> = ({
               {headroom}°C
             </span>
             <span className="text-[11px] text-muted-foreground">
-              {t('overclock.analytics.belowCeiling', 'safety buffer to 80°C')}
+              {t('overclock.analytics.belowCeiling', 'safety buffer to 85°C')}
             </span>
           </div>
           {/* Gauge Bar */}

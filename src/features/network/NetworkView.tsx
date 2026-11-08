@@ -23,7 +23,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { NetworkModuleOverview, NetworkAdapterInfo } from '@/types/electron';
 import { NetworkTopBar } from './components/NetworkTopBar';
-import { NetworkTestSection } from './components/NetworkTestSection';
 import { DnsManagerSection } from './components/DnsManagerSection';
 import { AdapterTweaksSection } from './components/AdapterTweaksSection';
 import { WifiInspectorSection } from './components/WifiInspectorSection';
@@ -33,13 +32,13 @@ import { NetworkRepairSection } from './components/NetworkRepairSection';
 import { HostsViewerModal } from './components/HostsViewerModal';
 import { PageLoadingState } from '@/components/common/PageLoadingState';
 
-export type NetworkSubTab = 'latency' | 'dns' | 'adapter' | 'repair';
+export type NetworkSubTab = 'dns' | 'adapter' | 'repair';
 
 export const NetworkView: React.FC = () => {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === 'fa';
 
-  const [activeSubTab, setActiveSubTab] = useState<NetworkSubTab>('latency');
+  const [activeSubTab, setActiveSubTab] = useState<NetworkSubTab>('dns');
   const [isHostsModalOpen, setIsHostsModalOpen] = useState(false);
   const [overview, setOverview] = useState<NetworkModuleOverview | null>(null);
   const [selectedAdapterId, setSelectedAdapterId] = useState<string | null>(null);
@@ -325,19 +324,6 @@ export const NetworkView: React.FC = () => {
         <div className="flex items-center gap-1 overflow-x-auto p-0.5">
           <button
             type="button"
-            onClick={() => setActiveSubTab('latency')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
-              activeSubTab === 'latency'
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground hover:bg-muted/40'
-            }`}
-          >
-            <Timer className="w-3.5 h-3.5" />
-            <span>{isRtl ? 'تاخیر و پکت لاس' : 'Latency & Jitter'}</span>
-          </button>
-
-          <button
-            type="button"
             onClick={() => setActiveSubTab('dns')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
               activeSubTab === 'dns'
@@ -346,7 +332,7 @@ export const NetworkView: React.FC = () => {
             }`}
           >
             <Globe className="w-3.5 h-3.5" />
-            <span>{isRtl ? 'مدیریت DNS' : 'DNS Manager'}</span>
+            <span>{isRtl ? 'تغییر و تنظیم DNS' : 'DNS Changer'}</span>
           </button>
 
           <button
@@ -390,16 +376,6 @@ export const NetworkView: React.FC = () => {
       </div>
 
       {/* Tab Content Display */}
-      {activeSubTab === 'latency' && (
-        <div className="space-y-6 animate-in fade-in duration-150">
-          <NetworkTestSection
-            adapter={activeAdapter}
-            onNotify={showBanner}
-            onRevertTweak={handleUndoAll}
-          />
-        </div>
-      )}
-
       {activeSubTab === 'dns' && (
         <div className="space-y-6 animate-in fade-in duration-150">
           <DnsManagerSection

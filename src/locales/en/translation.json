@@ -659,10 +659,10 @@
     "safety": {
       "title": "Zero-Harm Hardware Safety Active",
       "watchdogActive": "100ms Tripwire Armed",
-      "description": "Offsets run purely in active memory with locked voltage (+0 mV). In the event of high temperatures (>80°C) or driver recovery, settings automatically revert to factory stock.",
+      "description": "Offsets run purely in active memory with locked voltage (+0 mV). In the event of high temperatures (>85°C) or driver recovery, settings automatically revert to factory stock.",
       "voltageLocked": "Voltage: Locked (+0 mV)",
       "bootImmunity": "Boot-Loop Immune (In-Memory)",
-      "thermalCeiling": "Thermal Tripwire: 80°C GPU / 85°C CPU",
+      "thermalCeiling": "Thermal Tripwire: 85°C GPU / 85°C CPU",
       "autoRollbacks": "Protected Rollbacks: {{count}}",
       "voltageProtected": "Zero Overvolting Guaranteed"
     },
@@ -698,7 +698,7 @@
       "title": "Hardware Analytics & Silicon Headroom",
       "subtitle": "Real-time thermal margins, stability scores, and performance metrics.",
       "headroom": "Thermal Headroom Margin",
-      "belowCeiling": "safety buffer to 80°C",
+      "belowCeiling": "safety buffer to 85°C",
       "stabilityIndex": "Silicon Stability Index",
       "excellent": "Rock Solid",
       "good": "Stable",

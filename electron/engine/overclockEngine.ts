@@ -123,7 +123,7 @@ export class OverclockEngine {
       minMemOffsetMhz: this.MIN_SAFE_MEM_OFFSET,
       maxPowerLimitPct: this.MAX_SAFE_POWER_LIMIT,
       minPowerLimitPct: this.MIN_SAFE_POWER_LIMIT,
-      tempTripwireGpu: 80,
+      tempTripwireGpu: 85,
       tempTripwireCpu: 85,
       isInMemoryOnly: true, // ALWAYS true (Boot-loop immunity)
     };
@@ -429,7 +429,7 @@ export class OverclockEngine {
     const profiles = OverclockStore.listProfiles();
     const activeProf = profiles.find((p) => p.id === activeProfileId);
 
-    const headroom = Math.max(0, 80 - telemetry.gpuTemp);
+    const headroom = Math.max(0, 85 - telemetry.gpuTemp);
 
     // Silicon Stability Index: Starts at 100, drops slightly if TDRs or rollbacks occurred
     let stability = 100;

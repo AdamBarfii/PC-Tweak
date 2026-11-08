@@ -19,7 +19,7 @@ export class OverclockSafetyWatchdog {
   private static isRunning = false;
   private static timer: NodeJS.Timeout | null = null;
   private static pollIntervalMs = 100; // 100ms high-precision tripwire
-  private static gpuTempThresholdC = 80; // Hard limit 80°C
+  private static gpuTempThresholdC = 85; // Hard limit 85°C
   private static gpuHotspotThresholdC = 92; // Hard limit 92°C
   private static cpuTempThresholdC = 85; // Hard limit 85°C
 

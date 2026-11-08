@@ -280,25 +280,23 @@ export class DnsEngine {
   }
 
   /**
-   * Executes a real UDP multi-domain benchmark against DNS servers, bypassing local OS caching
+   * Executes a real UDP multi-domain benchmark against DNS servers concurrently, bypassing local OS caching
    */
   static async benchmarkDns(
     servers: { id: string; name: string; ip: string }[],
-    domains = ['google.com', 'cloudflare.com', 'microsoft.com', 'wikipedia.org', 'github.com']
+    domains = ['google.com', 'cloudflare.com', 'microsoft.com']
   ): Promise<DnsBenchmarkResult[]> {
-    const results: DnsBenchmarkResult[] = [];
-
-    for (const server of servers) {
+    const benchmarkTasks = servers.map(async (server): Promise<DnsBenchmarkResult> => {
       const latencies: number[] = [];
       let successCount = 0;
       let failureCount = 0;
 
       // Create isolated resolver pointed directly to this server IP
-      const resolver = new dns.promises.Resolver({ timeout: 2500, tries: 1 });
+      const resolver = new dns.promises.Resolver({ timeout: 1500, tries: 1 });
       try {
         resolver.setServers([server.ip]);
       } catch {
-        results.push({
+        return {
           serverId: server.id,
           serverName: server.name,
           serverIp: server.ip,
@@ -309,8 +307,7 @@ export class DnsEngine {
           successCount: 0,
           failureCount: domains.length,
           testedCount: domains.length,
-        });
-        continue;
+        };
       }
 
       for (const domain of domains) {
@@ -349,7 +346,7 @@ export class DnsEngine {
         p95Ms = latencies[p95Idx];
       }
 
-      results.push({
+      return {
         serverId: server.id,
         serverName: server.name,
         serverIp: server.ip,
@@ -360,8 +357,10 @@ export class DnsEngine {
         successCount,
         failureCount,
         testedCount: totalCount,
-      });
-    }
+      };
+    });
+
+    const results = await Promise.all(benchmarkTasks);
 
     // Sort by median latency ascending (fastest first, but keep real numbers)
     return results.sort((a, b) => {

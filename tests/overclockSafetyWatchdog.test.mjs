@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 class TestOverclockWatchdog {
   constructor() {
     this.isRunning = false;
-    this.gpuTempThresholdC = 80;
+    this.gpuTempThresholdC = 85;
     this.gpuHotspotThresholdC = 92;
     this.cpuTempThresholdC = 85;
     this.tripwireTriggered = false;
@@ -90,14 +90,14 @@ test('Overclock Safety Watchdog Tripwire Tests', async (t) => {
     assert.equal(reverted, false);
   });
 
-  await t.test('GPU Core temperature spike to 80°C triggers emergency rollback', async () => {
+  await t.test('GPU Core temperature spike to 85°C triggers emergency rollback', async () => {
     let revertReason = null;
     const watchdog = new TestOverclockWatchdog();
     watchdog.start((reason) => {
       revertReason = reason;
     });
 
-    await watchdog.checkSample({ gpuTemp: 81, hotspotTemp: 89, cpuTemp: 65 });
+    await watchdog.checkSample({ gpuTemp: 86, hotspotTemp: 89, cpuTemp: 65 });
     assert.equal(watchdog.tripwireTriggered, true);
     assert.ok(revertReason.includes('GPU thermal tripwire breached'));
     assert.equal(watchdog.rollbackCount, 1);

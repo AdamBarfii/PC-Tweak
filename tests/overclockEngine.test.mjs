@@ -68,7 +68,7 @@ class SafeOverclockTestHarness {
   }
 
   calculateHeadroom(currentTemp) {
-    return Math.max(0, 80 - currentTemp);
+    return Math.max(0, 85 - currentTemp);
   }
 
   calculateStabilityIndex(tdrCount = 0, rollbackCount = 0) {
@@ -179,10 +179,10 @@ test('Safe Overclock Engine Guardrails & Clamping Tests', async (t) => {
   await t.test('Analytics: Thermal Headroom and Silicon Stability calculations', () => {
     const harness = new SafeOverclockTestHarness();
 
-    // 42°C temp -> 38°C headroom
-    assert.equal(harness.calculateHeadroom(42), 38);
-    // 82°C temp -> 0°C headroom
-    assert.equal(harness.calculateHeadroom(82), 0);
+    // 42°C temp -> 43°C headroom (ceiling 85°C)
+    assert.equal(harness.calculateHeadroom(42), 43);
+    // 87°C temp -> 0°C headroom
+    assert.equal(harness.calculateHeadroom(87), 0);
 
     // Stability with 0 issues -> 100%
     assert.equal(harness.calculateStabilityIndex(0, 0), 100);

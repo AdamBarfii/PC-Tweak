@@ -182,4 +182,28 @@ Configuration for interface "Ethernet"
       assert.equal(snapshot.secondaryDns, '1.0.0.1');
     });
   });
+
+  describe('Iranian & Global DNS Presets Catalog', () => {
+    const iranianPresets = [
+      { id: 'radar', name: 'Radar Game', primary: '10.202.10.10', secondary: '10.202.10.11' },
+      { id: 'electro', name: 'Electro', primary: '78.157.42.101', secondary: '78.157.42.100' },
+      { id: 'shecan', name: 'Shecan', primary: '178.22.122.100', secondary: '185.51.200.2' },
+      { id: '403online', name: '403.online', primary: '10.202.10.202', secondary: '10.202.10.102' },
+      { id: 'begzar', name: 'Begzar', primary: '185.55.226.26', secondary: '185.55.225.25' },
+    ];
+
+    test('validates all Iranian DNS server IPv4 formats', () => {
+      for (const preset of iranianPresets) {
+        assert.equal(isValidIp(preset.primary), true, `${preset.name} primary IP must be valid`);
+        assert.equal(isValidIp(preset.secondary), true, `${preset.name} secondary IP must be valid`);
+      }
+    });
+
+    test('Radar Game and 403.online use correct 10.202 internal ranges', () => {
+      const radar = iranianPresets.find(p => p.id === 'radar');
+      const fourOhThree = iranianPresets.find(p => p.id === '403online');
+      assert.ok(radar.primary.startsWith('10.202.10.'));
+      assert.ok(fourOhThree.primary.startsWith('10.202.10.'));
+    });
+  });
 });
