@@ -1,0 +1,292 @@
+[
+  {
+    "id": "disable_telemetry",
+    "nameKey": "tweaks.privacy.disableTelemetry.name",
+    "descriptionKey": "tweaks.privacy.disableTelemetry.desc",
+    "category": "privacy",
+    "impact": "moderate",
+    "requiresReboot": true,
+    "anticheat": "safe",
+    "anticheatNote": "Windows telemetry policy. Does not touch game processes.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "valueName": "AllowTelemetry",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "service",
+        "serviceName": "DiagTrack",
+        "applyStartup": "Disabled",
+        "revertStartup": "Automatic",
+        "stopImmediately": true
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "valueName": "AllowTelemetry",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "disable_wer",
+    "nameKey": "tweaks.privacy.disableWer.name",
+    "descriptionKey": "tweaks.privacy.disableWer.desc",
+    "category": "privacy",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Disables background Windows Error Reporting service and automated crash log uploads.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting",
+        "valueName": "Disabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting",
+        "valueName": "DoReport",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "service",
+        "serviceName": "WerSvc",
+        "applyStartup": "Disabled",
+        "revertStartup": "Manual",
+        "stopImmediately": true
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting",
+        "valueName": "Disabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    }
+  },
+  {
+    "id": "disable_cortana_copilot",
+    "nameKey": "tweaks.privacy.disableCortanaCopilot.name",
+    "descriptionKey": "tweaks.privacy.disableCortanaCopilot.desc",
+    "category": "privacy",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Suppresses Bing search telemetry, Cortana assistant, and Windows Copilot data collection.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "valueName": "AllowCortana",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "valueName": "DisableWebSearch",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "valueName": "ConnectedSearchUseWeb",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+        "valueName": "TurnOffWindowsCopilot",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "valueName": "AllowCortana",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "disable_advertising_id",
+    "nameKey": "tweaks.privacy.disableAdvertisingId.name",
+    "descriptionKey": "tweaks.privacy.disableAdvertisingId.desc",
+    "category": "privacy",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Windows Advertising ID toggle. Safe for all games.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
+        "valueName": "Enabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo",
+        "valueName": "DisabledByGroupPolicy",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
+        "valueName": "Enabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "disable_activity_history",
+    "nameKey": "tweaks.privacy.disableActivityHistory.name",
+    "descriptionKey": "tweaks.privacy.disableActivityHistory.desc",
+    "category": "privacy",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Prevents Windows from publishing or uploading user activity timeline to cloud.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "valueName": "EnableActivityFeed",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "valueName": "PublishUserActivities",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "valueName": "UploadUserActivities",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "valueName": "EnableActivityFeed",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "disable_location_diagnostics",
+    "nameKey": "tweaks.privacy.disableLocationDiagnostics.name",
+    "descriptionKey": "tweaks.privacy.disableLocationDiagnostics.desc",
+    "category": "privacy",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Blocks background location sensor polling and app diagnostic telemetry harvesting.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors",
+        "valueName": "DisableLocation",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "valueName": "LetAppsGetDiagnosticInfo",
+        "valueType": "REG_DWORD",
+        "applyValue": 2,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors",
+        "valueName": "DisableLocation",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    }
+  }
+]

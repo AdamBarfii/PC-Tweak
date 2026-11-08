@@ -1,0 +1,730 @@
+{
+  "app": {
+    "title": "PC Tweak",
+    "tagline": "Advanced Windows Optimization & Performance Suite",
+    "adminBadge": "Administrator",
+    "standardBadge": "Standard User (Limited)",
+    "systemOptimized": "System Optimized",
+    "rebootRequired": "Reboot Recommended"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "optimizer": "System Optimizer",
+    "overclock": "Overclock",
+    "inputlab": "Input Lab",
+    "gaming": "Gaming & Power",
+    "network": "Network",
+    "privacy": "Privacy & Security",
+    "backup": "Restore & Backups",
+    "profiles": "Profiles",
+    "settings": "Settings"
+  },
+  "window": {
+    "minimize": "Minimize",
+    "maximize": "Maximize",
+    "restore": "Restore",
+    "close": "Close"
+  },
+  "common": {
+    "apply": "Apply",
+    "revert": "Revert",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "safe": "Safe",
+    "moderate": "Moderate",
+    "advanced": "Advanced",
+    "extreme": "Extreme",
+    "search": "Search tweaks...",
+    "status": "Status",
+    "actions": "Actions",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "refresh": "Sync",
+    "close": "Close"
+  },
+  "dashboard": {
+    "welcome": "System Performance Dashboard",
+    "cpu": "CPU Load",
+    "ram": "RAM Usage",
+    "disk": "Disk Activity",
+    "activeTweaks": "Active Optimizations",
+    "healthScore": "Optimization Score",
+    "quickActions": "Quick Boost",
+    "sysInfo": "System Specifications"
+  },
+  "settings": {
+    "title": "Settings & Preferences",
+    "subtitle": "Configure startup, window behavior, telemetry polling frequency, language, and system maintenance.",
+    "versionTag": "v1.0.0",
+    "syncStatus": "Preferences synced",
+    "savingStatus": "Saving changes...",
+    "savedStatus": "Settings saved",
+    "saveError": "Failed to update setting.",
+    "fetchError": "Failed to load settings from storage.",
+    "loadingTitle": "Loading Application Preferences...",
+    "loadingSubtitle": "Reading hardware polling settings and application configuration...",
+    "generalTitle": "General & Window Behavior",
+    "generalDesc": "Manage Windows startup and tray minimization behavior.",
+    "launchOnStartup": "Launch on Windows Startup",
+    "launchOnStartupDesc": "Automatically start PC Tweak in the background when logging into Windows.",
+    "minimizeToTray": "Minimize to System Tray",
+    "minimizeToTrayDesc": "Hide the application window to the taskbar notification area when minimized.",
+    "closeToTray": "Close Button Minimizes to Tray",
+    "closeToTrayDesc": "Keep PC Tweak running in the background when the close (X) button is clicked.",
+    "localizationTitle": "Language & Localization",
+    "localizationDesc": "Select application display language and layout direction.",
+    "englishLabel": "English",
+    "englishDesc": "Left-to-Right (LTR) default layout",
+    "persianLabel": "فارسی",
+    "persianDesc": "Right-to-Left (RTL) localized layout",
+    "telemetryTitle": "Hardware Telemetry & Polling",
+    "telemetryDesc": "Configure real-time hardware metrics refresh rate (CPU, GPU, RAM, Disk).",
+    "pollingInterval": "Telemetry Polling Interval",
+    "pollingIntervalDesc": "Controls how frequently hardware metrics are queried. Lower values provide smoother curves with negligible CPU usage.",
+    "currentIntervalLabel": "Current Interval: {{ms}} ms ({{sec}}s)",
+    "presetFast": "Fast (500ms)",
+    "presetBalanced": "Balanced (1000ms)",
+    "presetEco": "Eco (2500ms)",
+    "presetLow": "Low Overhead (5000ms)",
+    "overheadLow": "Negligible Overhead (< 0.1% CPU)",
+    "overheadModerate": "Minimal Overhead (< 0.3% CPU)",
+    "overheadFast": "Interactive Gaming Tracking (< 0.6% CPU)",
+    "appearanceTitle": "Appearance & Theme",
+    "appearanceDesc": "Choose your preferred visual theme and contrast mode.",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System Default",
+    "themeDarkDesc": "Obsidian Cockpit",
+    "themeLightDesc": "Chassis Ice",
+    "themeSystemDesc": "Match Windows",
+    "updatesTitle": "Updates & Integrity",
+    "updatesDesc": "Manage automated updates and version checks.",
+    "autoUpdate": "Check for Updates Automatically",
+    "autoUpdateDesc": "Automatically notify when new performance tweaks, game profiles, and anti-cheat patches are released.",
+    "dangerZoneTitle": "Danger Zone & Maintenance",
+    "dangerZoneDesc": "Restore preferences to factory defaults or perform a full application data wipe.",
+    "resetDefaults": "Reset Settings to Default",
+    "resetDefaultsDesc": "Restore all startup, tray, polling, and theme preferences to factory defaults. Custom tuning profiles and backups are kept safe.",
+    "resetAllData": "Reset All Application Data (Factory Wipe)",
+    "resetAllDataDesc": "Permanently delete all custom tuning profiles, audit history, backup snapshots, and settings.",
+    "confirmResetTitle": "Reset Settings to Default?",
+    "confirmResetMessage": "Are you sure you want to reset all preferences to their factory defaults? Your custom tuning profiles and backup history will not be affected.",
+    "confirmFactoryWipeTitle": "Factory Reset: Wipe All Data?",
+    "confirmFactoryWipeMessage": "CRITICAL WARNING: This action permanently erases all custom profiles, tweaks audit history, snapshots, and application settings. This cannot be undone.",
+    "resetSuccess": "Settings successfully restored to factory defaults.",
+    "factoryWipeSuccess": "All application data has been wiped and reset to factory defaults.",
+    "confirmAction": "Confirm",
+    "cancelAction": "Cancel",
+    "wipeAction": "Wipe All Data",
+    "autoRestore": "Auto-create Restore Point before changes",
+    "elevationPrompt": "Always prompt for Administrator rights"
+  },
+  "privacy": {
+    "title": "Privacy & Security",
+    "subtitle": "Block intrusive Windows telemetry, crash log uploading, advertising tracking, and diagnostic harvesting with 100% rollback guarantee.",
+    "zeroCloudTag": "100% Local",
+    "activeCount": "{{active}} of {{total}} Protected",
+    "fullyHardened": "Maximum Hardening",
+    "partiallyHardened": "Partial Telemetry Active",
+    "maximize": "Maximize Privacy",
+    "revertAll": "Revert All",
+    "statusApplied": "Blocked",
+    "statusReverted": "Default",
+    "tweakAppliedSuccess": "Protection activated successfully.",
+    "tweakRevertedSuccess": "Protection reverted to Windows default.",
+    "maximizeSuccess": "All 6 privacy protections have been successfully enabled.",
+    "alreadyMaximized": "All privacy protections are already active.",
+    "revertSuccess": "All privacy tweaks have been restored to Windows defaults.",
+    "actionFailed": "Failed to update tweak setting.",
+    "fetchError": "Failed to retrieve live privacy status.",
+    "maximizeError": "Failed to maximize privacy.",
+    "revertError": "Failed to revert privacy tweaks.",
+    "batchPartialError": "Some tweaks could not be applied.",
+    "revertPartialError": "Some tweaks encountered issues during rollback.",
+    "rebootNotice": "A Windows restart is recommended to complete service detachment.",
+    "loadingTitle": "Scanning Windows Privacy Policies...",
+    "loadingSubtitle": "Reading live telemetry states, DiagTrack, WerSvc, and Windows diagnostic policies...",
+    "anticheatSafe": "Kernel Anti-Cheat Safe",
+    "revertDialogTitle": "Revert All Privacy Protections?",
+    "revertDialogMessage": "Are you sure you want to revert all privacy tweaks? Windows Error Reporting, Telemetry, Cortana/Copilot, Advertising ID, Activity Feed, and Location Sensor access will be restored to their factory Windows settings.",
+    "revertDialogConfirm": "Yes, Revert All",
+    "revertDialogCancel": "Cancel"
+  },
+  "profiles": {
+    "title": "Tuning Profiles",
+    "subtitle": "Switch entire system configurations in 1 click across mouse precision, DirectX latency, and services with 100% rollback guarantee.",
+    "createProfile": "Create Profile",
+    "importProfile": "Import Profile",
+    "importProfileTitle": "Import Profile from .pctweak.json file",
+    "exportProfile": "Export Profile",
+    "exportAll": "Export All",
+    "activeProfileTag": "Active: {{name}}",
+    "currentlyActive": "Active Now",
+    "applyPreset": "Apply Preset",
+    "applying": "Applying...",
+    "noDescription": "Custom user tuning preset.",
+    "anticheatSafe": "Anti-Cheat Safe",
+    "builtInPresetsTitle": "System Presets",
+    "builtInPresetsSubtitle": "Handcrafted low-overhead tuning configurations tested for anti-cheat and system stability.",
+    "customProfilesTitle": "Custom Profiles",
+    "customProfilesSubtitle": "Personalized tuning profiles saved on your local machine.",
+    "noCustomProfilesTitle": "No Custom Profiles Yet",
+    "noCustomProfilesSubtitle": "Create your own customized tuning preset or import one from a file to get started.",
+    "createFirstProfile": "Create Your First Profile",
+    "editProfile": "Edit Profile",
+    "duplicateProfile": "Duplicate",
+    "deleteProfile": "Delete",
+    "tweaksCount": "{{count}} Tweaks",
+    "noTweaks": "No tweaks selected",
+    "mouseConfig": "Mouse: {{speed}}/11, {{accel}}",
+    "accelDisabled": "Zero Accel",
+    "accelEnabled": "Accel Enabled",
+    "rawInput": "Raw Input",
+    "latencyLabel": "Latency Profile",
+    "createdDate": "Created {{date}}",
+    "presets": {
+      "esports": {
+        "name": "Esports Competitive",
+        "badge": "Competitive Low-Latency",
+        "desc": "Engineered for maximum FPS pacing, lowest sensor jitter, and minimum input lag. Disables mouse acceleration, sets 1:1 raw input, enables DirectX Flip presentation, activates Game Mode, and strips background telemetry.",
+        "tweaksTag": "10 Tweaks",
+        "mouseTag": "1:1 Raw / Zero Accel",
+        "latencyTag": "Ultra-Low / 0.5ms Timer"
+      },
+      "streaming": {
+        "name": "Streaming & Content Creation",
+        "badge": "Creator & Broadcast",
+        "desc": "Balanced configuration for multi-application streaming (OBS, Discord, Premiere, games). Disables GameDVR capture conflicts, prevents background network telemetry spikes, while maintaining GPU pipeline headroom for hardware video encoding.",
+        "tweaksTag": "6 Tweaks",
+        "mouseTag": "1:1 Raw Input",
+        "latencyTag": "Balanced Pacing"
+      },
+      "battery": {
+        "name": "Maximum Battery / Quiet",
+        "badge": "Eco & Efficiency",
+        "desc": "Power efficiency profile for laptops and quiet workstation usage. Halts background diagnostics, disables unnecessary services, restores default system timer resolution to conserve CPU package C-states, and minimizes background wakeups.",
+        "tweaksTag": "4 Tweaks",
+        "mouseTag": "Standard Windows",
+        "latencyTag": "Power Saving"
+      },
+      "default": {
+        "name": "Windows Default / Revert All",
+        "badge": "Factory Baseline",
+        "desc": "Rolls back all optimizations to official Windows 11 factory defaults. Restores telemetry services (DiagTrack, WerSvc), standard mouse acceleration curves, default Game DVR recording, and default DirectX presentation queues.",
+        "tweaksTag": "Revert All (0 Active)",
+        "mouseTag": "Stock Curve",
+        "latencyTag": "Factory Default"
+      }
+    },
+    "modal": {
+      "createTitle": "Create Tuning Profile",
+      "editTitle": "Edit Profile: {{name}}",
+      "profileName": "Profile Name",
+      "profileNamePlaceholder": "e.g., Valorant Competitive, Work Focus...",
+      "category": "Category",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe the purpose and target games of this profile...",
+      "tabTweaks": "Tweaks ({{count}})",
+      "tabMouse": "Mouse & Sensor",
+      "tabDirectX": "DirectX & Latency",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect All",
+      "selectTweaksPrompt": "Select which system, gaming, and privacy tweaks to include in this profile:",
+      "pointerSpeed": "Pointer Speed (Windows Sensitivity)",
+      "pointerSpeedNeutral": "Neutral 1:1 (6 of 11)",
+      "speedSlow": "1 (Slow)",
+      "speedStandard": "6 (1:1 Standard)",
+      "speedFast": "11 (Fast)",
+      "disableAcceleration": "Disable Mouse Acceleration (1:1 Sensor Mapping)",
+      "disableAccelerationDesc": "Removes Windows pointer ballistics for linear muscle memory.",
+      "rawInputMode": "Force Raw Input Mode",
+      "rawInputModeDesc": "Bypasses Windows message pump acceleration curves.",
+      "disableTrails": "Disable Cursor Trails & Shadows",
+      "directXFlip": "DirectX Flip Presentation Model",
+      "directXFlipDesc": "Upgrades windowed games to modern DXGI borderless flip model.",
+      "directXLatency": "Max Frame Latency Reduction",
+      "directXLatencyDesc": "Reduces queued prerendered GPU frames to 1 for lowest motion-to-photon latency.",
+      "shaderCache": "Boost Shader Cache Size",
+      "shaderCacheDesc": "Prevents in-game compilation micro-stutters in DirectX 12 titles.",
+      "cancel": "Cancel",
+      "save": "Save Profile",
+      "create": "Create Profile",
+      "nameRequired": "Profile name is required.",
+      "nameTooLong": "Profile name cannot exceed 50 characters."
+    },
+    "dialogs": {
+      "deleteTitle": "Delete Tuning Profile?",
+      "deleteMessage": "Are you sure you want to permanently delete \"{{name}}\"? This action cannot be undone.",
+      "deleteConfirm": "Yes, Delete",
+      "deleteCancel": "Cancel",
+      "revertDefaultTitle": "Revert All Optimizations to Windows Defaults?",
+      "revertDefaultMessage": "Applying this preset will restore Windows Error Reporting, telemetry services, standard mouse acceleration, and default DirectX queues. Are you sure you want to continue?",
+      "revertDefaultConfirm": "Yes, Revert to Defaults",
+      "revertDefaultCancel": "Cancel"
+    },
+    "feedback": {
+      "appliedSuccess": "Profile \"{{name}}\" applied successfully.",
+      "appliedReboot": "Profile \"{{name}}\" applied. A Windows reboot is recommended for service detachment.",
+      "appliedError": "Failed to apply profile: {{error}}",
+      "savedSuccess": "Profile \"{{name}}\" saved successfully.",
+      "deletedSuccess": "Profile deleted successfully.",
+      "importedSuccess": "Profile \"{{name}}\" imported successfully.",
+      "importInvalid": "The selected file is not a valid PC Tweak profile JSON.",
+      "exportedSuccess": "Profile exported to {{fileName}}.",
+      "duplicatedSuccess": "Profile duplicated as \"{{name}}\"."
+    }
+  },
+  "tweaks": {
+    "system": {
+      "disableCortana": {
+        "name": "Disable Cortana",
+        "desc": "Prevents Cortana voice assistant from running and consuming background memory."
+      },
+      "disableWebSearch": {
+        "name": "Disable Web Search in Start Menu",
+        "desc": "Stops Windows Search from sending local keystrokes to Bing and displaying web suggestions."
+      }
+    },
+    "gaming": {
+      "enableGameMode": {
+        "name": "Enable Windows Game Mode",
+        "desc": "Prioritizes CPU and GPU resources for active games, reducing background task interruptions."
+      },
+      "disableGameDVR": {
+        "name": "Disable Game DVR Background Recording",
+        "desc": "Eliminates frame stuttering and micro-freezes by turning off continuous background capture."
+      }
+    },
+    "privacy": {
+      "disableTelemetry": {
+        "name": "Disable Windows Telemetry & Diagnostics",
+        "desc": "Stops DiagTrack service and sets telemetry policy to 0, restricting background system diagnostics."
+      },
+      "disableWer": {
+        "name": "Disable Windows Error Reporting (WerSvc)",
+        "desc": "Disables background WerSvc service and crash dump transmissions to Microsoft telemetry servers."
+      },
+      "disableCortanaCopilot": {
+        "name": "Disable Cortana & Windows Copilot Telemetry",
+        "desc": "Prevents Bing web search indexing, Cortana voice telemetry, and Windows Copilot data collection."
+      },
+      "disableAdvertisingId": {
+        "name": "Disable Advertising ID Tracking",
+        "desc": "Prevents Microsoft and third-party apps from tracking user activity for personalized ad profiling."
+      },
+      "disableActivityHistory": {
+        "name": "Disable Activity History & Timeline Upload",
+        "desc": "Stops Windows from publishing user application usage histories and uploading activity feeds to the cloud."
+      },
+      "disableLocationDiagnostics": {
+        "name": "Disable Location Tracking & App Diagnostics",
+        "desc": "Blocks background geolocation sensor polling and stops Windows from harvesting diagnostic data from apps."
+      }
+    },
+    "input": {
+      "disableAcceleration": {
+        "name": "Disable Pointer Precision (Mouse Acceleration)",
+        "desc": "Eliminates variable cursor velocity scaling for consistent 1:1 muscle memory aim."
+      },
+      "neutralPointerSpeed": {
+        "name": "Set Neutral Pointer Speed (6/11)",
+        "desc": "Sets Windows pointer sensitivity to the neutral 1:1 ratio, preventing sub-pixel skips or software interpolation."
+      },
+      "disableCursorShadow": {
+        "name": "Disable Pointer Trails & Cursor Shadow",
+        "desc": "Removes visual rendering overhead and trails on the mouse pointer."
+      },
+      "usbSelectiveSuspend": {
+        "name": "Disable USB Selective Suspend",
+        "desc": "Keeps USB mouse ports continuously active to prevent sleep delay when holding crosshair angles."
+      },
+      "keyboardRepeatRate": {
+        "name": "Maximize Keyboard Repeat Rate & Zero Delay",
+        "desc": "Minimizes initial key repeat delay to 0 and maximizes speed for instant continuous actions and strafing."
+      },
+      "disableFilterKeys": {
+        "name": "Disable Filter Keys (No Shift Delay)",
+        "desc": "Eliminates the built-in Windows delay when holding down or rapidly tapping the Shift key."
+      },
+      "disableStickyToggleKeys": {
+        "name": "Disable Sticky Keys & Toggle Keys",
+        "desc": "Completely prevents the 5x Shift popup and modifier key locking during fast gameplay."
+      },
+      "disableAltShiftToggle": {
+        "name": "Disable In-Game Language Switch (Alt+Shift)",
+        "desc": "Prevents accidental language switching when pressing Alt and Shift together during walking or jumping."
+      },
+      "numlockOnBoot": {
+        "name": "Enable Num Lock on Startup",
+        "desc": "Automatically turns on Num Lock upon Windows boot for convenience."
+      },
+      "disableWinKey": {
+        "name": "Disable Windows Key (Gaming WinLock)",
+        "desc": "Prevents accidental Start Menu popups during gameplay by disabling the Windows key (requires reboot)."
+      },
+      "mmcssPriority": {
+        "name": "Optimize Input Thread Priority (MMCSS)",
+        "desc": "Prioritizes low-latency input scheduling against background DPC and disk interrupt storms."
+      }
+    },
+    "advanced": {
+      "vbsDisable": {
+        "name": "Disable VBS & Memory Integrity (HVCI)",
+        "desc": "Delivers several to 10% better frame pacing and CPU-bound FPS by removing virtualization overhead.",
+        "warning": "Reduces core kernel memory defense against rogue drivers. Recommended strictly for dedicated gaming rigs."
+      },
+      "timerResolution": {
+        "name": "Global 0.5ms Timer Resolution",
+        "desc": "Smoother cursor motion and tighter frame pacing across Windows 11.",
+        "warning": "Slightly increases power draw and CPU heat. Not recommended while running on laptop battery."
+      },
+      "spectreMeltdown": {
+        "name": "Disable Spectre & Meltdown Mitigations",
+        "desc": "Recovers CPU performance on older Intel processors by disabling branch predictor mitigation penalties.",
+        "warning": "Leaves CPU speculative execution mitigations inactive. Use with informed consent."
+      }
+    }
+  },
+  "diagnostics": {
+    "bootBreakdown": {
+      "title": "Windows Boot Time Breakdown",
+      "totalDuration": "Total Duration",
+      "mainPath": "Main Path",
+      "kernelInit": "Kernel Init",
+      "driverInit": "Driver Init",
+      "smssInit": "SMSS Session Init",
+      "postBoot": "Post-Boot Startup Apps",
+      "adminRequired": "Admin Required for Kernel Log"
+    },
+    "dpcIsr": {
+      "title": "DPC & ISR Driver Latency Audit",
+      "dpcTime": "% DPC Time",
+      "isrTime": "% Interrupt (ISR) Time",
+      "status": "Driver Latency Status",
+      "optimal": "Optimal (Low Latency)",
+      "moderate": "Moderate Latency",
+      "high": "High Latency Spikes",
+      "hotspots": "Latency Hotspots",
+      "adminRequired": "Admin for Real-Time %"
+    }
+  },
+  "hosts": {
+    "title": "Windows Hosts File Inspector",
+    "totalLines": "Total Lines",
+    "activeLocal": "Active Local Mappings",
+    "customRedirects": "Custom Domain Redirects",
+    "resetDefault": "Reset to Windows Default",
+    "confirmReset": "Confirm Reset",
+    "readOnlyAdmin": "Read-Only (Admin Required)"
+  },
+  "networkSubTabs": {
+    "latencyJitter": "Latency & Jitter",
+    "dnsManager": "DNS Manager",
+    "adapterTweaks": "Adapter Tweaks",
+    "repairSafety": "Repair & Safety Tools"
+  },
+  "optimizer": {
+    "title": "System Optimizer",
+    "subtitle": "Native optimization for RAM, Disk, Services, Scheduled Tasks, and CPU",
+    "tabs": {
+      "ram": "RAM & Memory",
+      "disk": "Disk & Storage",
+      "services": "Windows Services",
+      "tasks": "Scheduled Tasks",
+      "cpu": "CPU & Power",
+      "automation": "Automation & Rules"
+    },
+    "header": {
+      "ramUsage": "RAM Usage",
+      "cpuUsage": "CPU Load",
+      "diskUsage": "Drive C: Usage",
+      "restorePoint": "Create Restore Point",
+      "creatingRestorePoint": "Creating Restore Point..."
+    },
+    "ram": {
+      "title": "Working Set & Memory Optimizer",
+      "description": "Trim non-essential process working sets using native Win32 EmptyWorkingSet without closing applications.",
+      "totalRam": "Total System RAM",
+      "usedRam": "Used Working Set",
+      "freeRam": "Available Free RAM",
+      "trimButton": "Trim Working Sets",
+      "trimming": "Trimming Working Sets...",
+      "freedSuccess": "Reclaimed {{freedMb}} MB of RAM. Available memory updated.",
+      "freedZero": "Memory working sets are already compact. 0 MB needed trimming.",
+      "hogsTitle": "Active Process Memory Inspector",
+      "searchPlaceholder": "Filter processes...",
+      "colProcess": "Process Name",
+      "colPid": "PID",
+      "colWorkingSet": "Working Set",
+      "colPrivate": "Private Bytes",
+      "colStatus": "Safety",
+      "colAction": "Action",
+      "critical": "Critical Protected",
+      "userProcess": "User App",
+      "endProcess": "End Task",
+      "confirmEndTitle": "Terminate Process?",
+      "confirmEndMessage": "Are you sure you want to forcibly terminate {{name}} (PID {{pid}})? Any unsaved work in this process may be lost."
+    },
+    "disk": {
+      "title": "Safe Storage & Junk Cleaner",
+      "description": "Scan and clean temporary system clutter safely. Files younger than 24h and in-use locked files are protected.",
+      "driveHealth": "System Drive Status",
+      "mediaType": "Media Type",
+      "totalSpace": "Total Space",
+      "freeSpace": "Free Space",
+      "percentUsed": "Used Space",
+      "runTrim": "Run SSD TRIM",
+      "trimming": "Running TRIM...",
+      "scanButton": "Scan Junk",
+      "scanning": "Scanning Storage...",
+      "cleanButton": "Clean Selected ({{size}})",
+      "cleaning": "Cleaning Selected...",
+      "cleanSuccess": "Cleaned {{count}} files and reclaimed {{size}} of disk space.",
+      "userTemp": "User Temp Files",
+      "userTempDesc": "Temporary files in %TEMP% older than 24 hours.",
+      "systemTemp": "Windows System Temp",
+      "systemTempDesc": "Temporary files in C:\\Windows\\Temp.",
+      "windowsUpdate": "Windows Update Cache",
+      "windowsUpdateDesc": "Stale downloaded installer payloads in SoftwareDistribution.",
+      "crashDumps": "Crash Dumps & WER",
+      "crashDumpsDesc": "Windows Error Reporting minidumps and crash archives.",
+      "deliveryOpt": "Delivery Optimization Cache",
+      "deliveryOptDesc": "Downloaded Windows Update peer-to-peer distribution files.",
+      "shaderCache": "DirectX & GPU Shader Cache",
+      "shaderCacheDesc": "Stale compiled shader artifacts for DirectX, NVIDIA, and AMD.",
+      "thumbCache": "Windows Thumbnail Cache",
+      "thumbCacheDesc": "Explorer icon and thumbnail preview databases.",
+      "recycleBin": "Windows Recycle Bin",
+      "recycleBinDesc": "Files currently waiting in the Windows Recycle Bin."
+    },
+    "services": {
+      "title": "Windows Service Optimizer",
+      "description": "Disable obsolete telemetry, diagnostic pollers, and clean orphaned service keys left behind by uninstalled software.",
+      "filterAll": "All Services",
+      "filterOrphaned": "Orphaned Entries",
+      "filterTelemetry": "Telemetry & Bloat",
+      "filterRunning": "Running Only",
+      "searchPlaceholder": "Filter services by name or description...",
+      "colName": "Service Name",
+      "colStatus": "State",
+      "colStartup": "Startup Type",
+      "colCategory": "Category",
+      "colAction": "Action",
+      "deleteOrphan": "Delete Orphan Entry",
+      "confirmDeleteOrphan": "Are you sure you want to delete orphaned service entry '{{name}}'? A registry backup will be recorded automatically.",
+      "autoOptimizeSafe": "Auto-Optimize Safe Services",
+      "autoOptimizing": "Optimizing Services...",
+      "autoOptimizeDone": "Successfully optimized safe background services.",
+      "diagtrackDesc": "Connected User Experiences and Telemetry. Safe to disable for privacy and reduced disk I/O.",
+      "dmwappushDesc": "WAP Push message routing service. Safe to disable.",
+      "retaildemoDesc": "Retail demo mode store presentation service. Not needed on personal PCs.",
+      "mapsbrokerDesc": "Downloaded Maps Manager. Set to Manual if offline maps are not used.",
+      "wpcmonDesc": "Parental controls monitoring service.",
+      "remoteregistryDesc": "Remote Registry service. Disabling enhances system network security.",
+      "xblauthDesc": "Xbox Live authentication manager. Set to Manual if Xbox app is not used.",
+      "xboxgipDesc": "Xbox Accessory Management service.",
+      "xblgamesaveDesc": "Xbox Live Game Save sync service.",
+      "edgeupdateDesc": "Microsoft Edge background update poller.",
+      "gupdateDesc": "Google Update background poller.",
+      "orphanDesc": "Orphaned service: Target executable file does not exist on disk.",
+      "criticalDesc": "Core Windows operating system component (Strictly Protected).",
+      "defaultDesc": "Standard Windows background service."
+    },
+    "tasks": {
+      "title": "Scheduled Task Optimizer",
+      "description": "Disable aggressive telemetry tasks and remove broken orphaned task scheduler entries.",
+      "filterAll": "All Tasks",
+      "filterOrphaned": "Orphaned Tasks",
+      "filterTelemetry": "Telemetry Tasks",
+      "filterUpdaters": "Third-Party Updaters",
+      "searchPlaceholder": "Filter scheduled tasks...",
+      "colTask": "Task Name & Path",
+      "colAction": "Target Executable",
+      "colState": "Status",
+      "colActionBtn": "Action",
+      "missingBinary": "Missing Executable",
+      "validBinary": "Executable Found",
+      "deleteTask": "Delete Task",
+      "confirmDeleteTask": "Are you sure you want to delete task '{{name}}'? The task XML will be backed up to your Restore & Backups history.",
+      "consolidatorDesc": "Customer Experience Improvement Program data consolidator.",
+      "usbceipDesc": "USB Customer Experience Improvement Program data collector.",
+      "appraiserDesc": "Compatibility Appraiser. Frequently causes high disk and CPU usage on startup.",
+      "programdataDesc": "Program Data Updater background telemetry scanner.",
+      "diskdiagDesc": "Windows Disk Diagnostic data collector.",
+      "dmclientDesc": "Device management and feedback client task.",
+      "autochkDesc": "Autochk proxy task.",
+      "updaterDesc": "Periodic background application updater task.",
+      "orphanDesc": "Orphaned task: Action points to an executable that no longer exists.",
+      "criticalDesc": "Protected system maintenance task.",
+      "defaultDesc": "Registered Windows scheduled task."
+    },
+    "cpu": {
+      "title": "CPU & Power Plan Optimizer",
+      "description": "Unlock high performance power plans, manage background process priorities, and eliminate idle CPU spikes.",
+      "powerPlansTitle": "Windows Power Schemes",
+      "unlockUltimate": "Unlock Ultimate Performance",
+      "unlockingUltimate": "Unlocking...",
+      "activatePlan": "Set Active",
+      "activeBadge": "Currently Active",
+      "ultimateBadge": "Ultimate Performance",
+      "hogsTitle": "Real-Time CPU Load Inspector",
+      "colProcess": "Process Name",
+      "colPid": "PID",
+      "colCpu": "CPU Time (s)",
+      "colPriority": "Priority Class",
+      "priorityUpdated": "Updated priority for process {{pid}} to {{priority}}."
+    },
+    "automation": {
+      "title": "System Automation & Rules",
+      "subtitle": "Configure automated triggers, background health workers, and scheduled maintenance passes.",
+      "masterToggle": "Enable Background Maintenance",
+      "masterToggleDesc": "Allows PC Tweak to execute quiet, scheduled optimizations and threshold-based cleaning.",
+      "activeStatus": "Background Engine Active",
+      "pausedStatus": "Automation Engine Paused",
+      "ramRuleTitle": "Auto RAM Trimming",
+      "ramRuleDesc": "Trims working sets when memory exceeds threshold. Preserves active applications.",
+      "threshold": "Trigger Threshold",
+      "cooldown": "Cooldown Period",
+      "trimOnGameExit": "Trim automatically when a game or heavy process closes",
+      "diskRuleTitle": "Auto Storage Junk Cleaner",
+      "diskRuleDesc": "Safely removes temporary files older than 24h when junk exceeds threshold.",
+      "thresholdMb": "Storage Clutter Threshold",
+      "cleanSchedule": "Scan Cadence",
+      "cadenceThreshold": "When threshold exceeded",
+      "cadenceDaily": "Daily check",
+      "cadenceWeekly": "Weekly check",
+      "ssdRuleTitle": "Scheduled SSD TRIM Pass",
+      "ssdRuleDesc": "Issues native Windows TRIM commands weekly to maintain SSD performance.",
+      "gameBoostTitle": "Auto Game Optimizer",
+      "gameBoostDesc": "Switches to Ultimate Performance power plan and throttles background apps when games launch.",
+      "sentinelTitle": "Telemetry Sentinel",
+      "sentinelDesc": "Guards against Windows Update resurrecting Microsoft telemetry services.",
+      "historyTitle": "Automation Activity Log",
+      "clearLogs": "Clear Log",
+      "noLogs": "No automated actions executed yet. Rules will log events as triggers occur.",
+      "colTimestamp": "Timestamp",
+      "colType": "Action Type",
+      "colDetail": "Details",
+      "colReclaimed": "Reclaimed"
+    }
+  },
+  "suggestions": {
+    "title": "Smart System Advisor",
+    "subtitle": "Live recommendations based on actual hardware metrics and Windows subsystem state.",
+    "applyAll": "Apply All Recommended",
+    "applyingAll": "Applying Recommendations...",
+    "apply": "Apply",
+    "applying": "Applying...",
+    "dismiss": "Dismiss",
+    "emptyState": "All systems optimal. No optimization recommendations at this time.",
+    "diskClean": {
+      "title": "Clean Storage Clutter",
+      "desc": "Found {{size}} of temporary clutter and crash dumps. Safe to reclaim with 1-click."
+    },
+    "ramTrim": {
+      "title": "Trim RAM Working Sets",
+      "desc": "High memory load detected ({{percent}}%). Trim working sets to recover RAM without closing apps."
+    },
+    "powerPlan": {
+      "title": "Activate Ultimate Performance",
+      "desc": "Switch from Balanced scheme to Ultimate Performance to eliminate CPU power throttling."
+    },
+    "telemetry": {
+      "title": "Silence Background Telemetry",
+      "desc": "Connected User Experiences (DiagTrack) is running. Disable to reduce background disk I/O."
+    },
+    "orphans": {
+      "title": "Remove Orphaned Entries",
+      "desc": "Found {{count}} broken service or task entries pointing to missing files. Clean safely."
+    },
+    "gameMode": {
+      "title": "Enable Windows Game Mode",
+      "desc": "Windows Game Mode is currently disabled. Enable to prioritize GPU and CPU game threads."
+    }
+  },
+  "overclock": {
+    "title": "Safe Overclocking & Analytics",
+    "subtitle": "Non-destructive automated GPU frequency boost with 100ms thermal tripwire and boot-loop immunity.",
+    "badges": {
+      "zeroHarm": "Zero-Harm Architecture"
+    },
+    "actions": {
+      "startAutoScan": "1-Click Safe Auto-OC",
+      "revertStock": "Revert to Factory Stock",
+      "applyOffsets": "Apply Safe Offsets",
+      "resetSliders": "Reset Sliders"
+    },
+    "safety": {
+      "title": "Zero-Harm Hardware Safety Active",
+      "watchdogActive": "100ms Tripwire Armed",
+      "description": "Offsets run purely in active memory with locked voltage (+0 mV). In the event of high temperatures (>80°C) or driver recovery, settings automatically revert to factory stock.",
+      "voltageLocked": "Voltage: Locked (+0 mV)",
+      "bootImmunity": "Boot-Loop Immune (In-Memory)",
+      "thermalCeiling": "Thermal Tripwire: 80°C GPU / 85°C CPU",
+      "autoRollbacks": "Protected Rollbacks: {{count}}",
+      "voltageProtected": "Zero Overvolting Guaranteed"
+    },
+    "controls": {
+      "title": "Manual Safe Offset Sliders",
+      "detectingGpu": "Detecting GPU Hardware..."
+    },
+    "presets": {
+      "title": "Quick Safe Presets",
+      "stock": "Stock",
+      "safe": "Safe Daily",
+      "esports": "Esports Peak"
+    },
+    "sliders": {
+      "coreClock": "GPU Core Clock Offset",
+      "memClock": "GPU Memory Clock Offset",
+      "powerTarget": "Power Target Limit",
+      "voltage": "Core Voltage Modification",
+      "voltageLockedNotice": "Strictly locked at stock (+0 mV) to guarantee zero silicon degradation."
+    },
+    "modal": {
+      "scanningTitle": "Zero-Harm Auto-OC Scanner Running",
+      "completedTitle": "Auto-OC Optimization Complete",
+      "abortedTitle": "Auto-OC Scan Aborted",
+      "subtitle": "Iterative safe step testing within non-destructive hardware guardrails.",
+      "progress": "Validated",
+      "currentStage": "Stage: {{stage}}",
+      "telemetryLog": "Safety Telemetry Stream",
+      "initializing": "Initializing safe auto-tuner engine...",
+      "preflightCheck": "Inspecting hardware guardrails: Voltage locked at +0 mV."
+    },
+    "analytics": {
+      "title": "Hardware Analytics & Silicon Headroom",
+      "subtitle": "Real-time thermal margins, stability scores, and performance metrics.",
+      "headroom": "Thermal Headroom Margin",
+      "belowCeiling": "safety buffer to 80°C",
+      "stabilityIndex": "Silicon Stability Index",
+      "excellent": "Rock Solid",
+      "good": "Stable",
+      "performanceGains": "Estimated Performance Gain",
+      "estimatedFps": "Estimated FPS Gain",
+      "bandwidthDelta": "VRAM Bandwidth",
+      "gflopsDelta": "Compute Delta",
+      "tripwireArmed": "100ms Tripwire Watchdog: Active",
+      "lastTuned": "Tuned: {{date}}",
+      "neverTuned": "Status: Active"
+    },
+    "telemetry": {
+      "coreClock": "Core Clock",
+      "memClock": "Memory Clock",
+      "temp": "GPU Temp",
+      "power": "Power Draw",
+      "fan": "Fan Speed",
+      "coreOffset": "Tested Core",
+      "memOffset": "Tested Memory",
+      "gpuTemp": "GPU Temp"
+    },
+    "alerts": {
+      "appliedSuccess": "Safe offsets applied: +{{core}} MHz Core, +{{mem}} MHz Memory, {{power}}% Power.",
+      "applyFailed": "Failed to apply offsets.",
+      "stockRestored": "Factory stock clock defaults restored.",
+      "revertFailed": "Failed to restore stock."
+    }
+  }
+}

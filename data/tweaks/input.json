@@ -1,0 +1,439 @@
+[
+  {
+    "id": "mouse_disable_acceleration",
+    "nameKey": "tweaks.input.disableAcceleration.name",
+    "descriptionKey": "tweaks.input.disableAcceleration.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseSpeed",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "1"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseThreshold1",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "6"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseThreshold2",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "10"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseSpeed",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "1"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "mouse_neutral_pointer_speed",
+    "nameKey": "tweaks.input.neutralPointerSpeed.name",
+    "descriptionKey": "tweaks.input.neutralPointerSpeed.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseSensitivity",
+        "valueType": "REG_SZ",
+        "applyValue": "10",
+        "revertValue": "10"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseSensitivity",
+        "valueType": "REG_SZ",
+        "applyValue": "10",
+        "revertValue": "10"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "mouse_disable_trails_and_shadow",
+    "nameKey": "tweaks.input.disableCursorShadow.name",
+    "descriptionKey": "tweaks.input.disableCursorShadow.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Mouse",
+        "valueName": "MouseTrails",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "0"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Desktop",
+        "valueName": "CursorShadow",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Desktop",
+        "valueName": "CursorShadow",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "usb_disable_selective_suspend",
+    "nameKey": "tweaks.input.usbSelectiveSuspend.name",
+    "descriptionKey": "tweaks.input.usbSelectiveSuspend.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\2a737441-1930-4402-8d77-b2bebba308a3\\48e6b7a6-50f5-4782-a5d4-53bb8f07e226",
+        "valueName": "SettingAttributes",
+        "valueType": "REG_DWORD",
+        "applyValue": 2,
+        "revertValue": 1
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\2a737441-1930-4402-8d77-b2bebba308a3\\48e6b7a6-50f5-4782-a5d4-53bb8f07e226",
+        "valueName": "SettingAttributes",
+        "valueType": "REG_DWORD",
+        "applyValue": 2,
+        "revertValue": 1
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "keyboard_repeat_rate_max",
+    "nameKey": "tweaks.input.keyboardRepeatRate.name",
+    "descriptionKey": "tweaks.input.keyboardRepeatRate.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Keyboard",
+        "valueName": "KeyboardSpeed",
+        "valueType": "REG_SZ",
+        "applyValue": "31",
+        "revertValue": "31"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Keyboard",
+        "valueName": "KeyboardDelay",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "1"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Keyboard",
+        "valueName": "KeyboardDelay",
+        "valueType": "REG_SZ",
+        "applyValue": "0",
+        "revertValue": "1"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "keyboard_disable_filter_keys",
+    "nameKey": "tweaks.input.disableFilterKeys.name",
+    "descriptionKey": "tweaks.input.disableFilterKeys.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Accessibility\\Keyboard Response",
+        "valueName": "Flags",
+        "valueType": "REG_SZ",
+        "applyValue": "98",
+        "revertValue": "126"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Accessibility\\Keyboard Response",
+        "valueName": "Flags",
+        "valueType": "REG_SZ",
+        "applyValue": "98",
+        "revertValue": "126"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "keyboard_disable_sticky_toggle_keys",
+    "nameKey": "tweaks.input.disableStickyToggleKeys.name",
+    "descriptionKey": "tweaks.input.disableStickyToggleKeys.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Accessibility\\StickyKeys",
+        "valueName": "Flags",
+        "valueType": "REG_SZ",
+        "applyValue": "506",
+        "revertValue": "510"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Accessibility\\ToggleKeys",
+        "valueName": "Flags",
+        "valueType": "REG_SZ",
+        "applyValue": "58",
+        "revertValue": "62"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Accessibility\\StickyKeys",
+        "valueName": "Flags",
+        "valueType": "REG_SZ",
+        "applyValue": "506",
+        "revertValue": "510"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "keyboard_disable_alt_shift_toggle",
+    "nameKey": "tweaks.input.disableAltShiftToggle.name",
+    "descriptionKey": "tweaks.input.disableAltShiftToggle.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Keyboard Layout\\Toggle",
+        "valueName": "Hotkey",
+        "valueType": "REG_SZ",
+        "applyValue": "3",
+        "revertValue": "1"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Keyboard Layout\\Toggle",
+        "valueName": "Language Hotkey",
+        "valueType": "REG_SZ",
+        "applyValue": "3",
+        "revertValue": "1"
+      },
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Keyboard Layout\\Toggle",
+        "valueName": "Layout Hotkey",
+        "valueType": "REG_SZ",
+        "applyValue": "3",
+        "revertValue": "1"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Keyboard Layout\\Toggle",
+        "valueName": "Hotkey",
+        "valueType": "REG_SZ",
+        "applyValue": "3",
+        "revertValue": "1"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "keyboard_numlock_on_boot",
+    "nameKey": "tweaks.input.numlockOnBoot.name",
+    "descriptionKey": "tweaks.input.numlockOnBoot.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Keyboard",
+        "valueName": "InitialKeyboardIndicators",
+        "valueType": "REG_SZ",
+        "applyValue": "2",
+        "revertValue": "0"
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\Keyboard",
+        "valueName": "InitialKeyboardIndicators",
+        "valueType": "REG_SZ",
+        "applyValue": "2",
+        "revertValue": "0"
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "keyboard_disable_windows_key",
+    "nameKey": "tweaks.input.disableWinKey.name",
+    "descriptionKey": "tweaks.input.disableWinKey.desc",
+    "category": "system",
+    "impact": "moderate",
+    "requiresReboot": true,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout",
+        "valueName": "Scancode Map",
+        "valueType": "REG_BINARY",
+        "applyValue": "00000000000000000300000000005be000005ce000000000",
+        "revertValue": null
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout",
+        "valueName": "Scancode Map",
+        "valueType": "REG_BINARY",
+        "applyValue": "00000000000000000300000000005be000005ce000000000",
+        "revertValue": null
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  },
+  {
+    "id": "system_input_mmcss_priority",
+    "nameKey": "tweaks.input.mmcssPriority.name",
+    "descriptionKey": "tweaks.input.mmcssPriority.desc",
+    "category": "system",
+    "impact": "moderate",
+    "requiresReboot": true,
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+        "valueName": "SystemResponsiveness",
+        "valueType": "REG_DWORD",
+        "applyValue": 10,
+        "revertValue": 20
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+        "valueName": "SystemResponsiveness",
+        "valueType": "REG_DWORD",
+        "applyValue": 10,
+        "revertValue": 20
+      }
+    },
+    "anticheat": "safe",
+    "anticheatNote": "Input peripheral setting. 100% compliant with all anti-cheats.",
+    "affectedAntiCheats": []
+  }
+]

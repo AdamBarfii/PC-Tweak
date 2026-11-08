@@ -1,0 +1,114 @@
+[
+  {
+    "id": "enable_game_mode",
+    "nameKey": "tweaks.gaming.enableGameMode.name",
+    "descriptionKey": "tweaks.gaming.enableGameMode.desc",
+    "category": "gaming",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Official Windows Game Mode. Compliant with all anti-cheats.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\GameBar",
+        "valueName": "AutoGameModeEnabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\GameBar",
+        "valueName": "AutoGameModeEnabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    }
+  },
+  {
+    "id": "disable_game_dvr",
+    "nameKey": "tweaks.gaming.disableGameDVR.name",
+    "descriptionKey": "tweaks.gaming.disableGameDVR.desc",
+    "category": "gaming",
+    "impact": "safe",
+    "requiresReboot": true,
+    "anticheat": "safe",
+    "anticheatNote": "Disables background video capture (Game DVR). Compliant with all anti-cheats.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "System\\GameConfigStore",
+        "valueName": "GameDVR_Enabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR",
+        "valueName": "AllowGameDVR",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "System\\GameConfigStore",
+        "valueName": "GameDVR_Enabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "windowed_optimizations_win11",
+    "nameKey": "tweaks.gaming.windowedOptimizations.name",
+    "descriptionKey": "tweaks.gaming.windowedOptimizations.desc",
+    "category": "gaming",
+    "impact": "safe",
+    "requiresReboot": false,
+    "minWindowsBuild": 22000,
+    "anticheat": "safe",
+    "anticheatNote": "DXGI Flip presentation model for windowed games. 100% anti-cheat compliant.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\DirectX\\UserGpuPreferences",
+        "valueName": "DirectXUserGlobalSettings",
+        "valueType": "REG_SZ",
+        "applyValue": "SwapEffectUpgradeEnable=1;",
+        "revertValue": ""
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\DirectX\\UserGpuPreferences",
+        "valueName": "DirectXUserGlobalSettings",
+        "valueType": "REG_SZ",
+        "applyValue": "SwapEffectUpgradeEnable=1;",
+        "revertValue": ""
+      }
+    }
+  }
+]

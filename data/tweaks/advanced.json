@@ -1,0 +1,134 @@
+[
+  {
+    "id": "vbs_memory_integrity_disable",
+    "nameKey": "tweaks.advanced.vbsDisable.name",
+    "descriptionKey": "tweaks.advanced.vbsDisable.desc",
+    "category": "advanced",
+    "impact": "advanced",
+    "requiresReboot": true,
+    "warningKey": "tweaks.advanced.vbsDisable.warning",
+    "anticheat": "blocked-risk",
+    "anticheatNote": "Disabling VBS / HVCI breaks Riot Vanguard (triggers error VAN 1067 / VAN 9003) and FACEIT Anti-Cheat on Windows 11.",
+    "affectedAntiCheats": ["vanguard", "faceit"],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard",
+        "valueName": "EnableVirtualizationBasedSecurity",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard",
+        "valueName": "HypervisorEnforcedCodeIntegrity",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity",
+        "valueName": "Enabled",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard",
+        "valueName": "EnableVirtualizationBasedSecurity",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "timer_resolution_global",
+    "nameKey": "tweaks.advanced.timerResolution.name",
+    "descriptionKey": "tweaks.advanced.timerResolution.desc",
+    "category": "advanced",
+    "impact": "advanced",
+    "requiresReboot": false,
+    "warningKey": "tweaks.advanced.timerResolution.warning",
+    "anticheat": "caution",
+    "anticheatNote": "Modifies global system timer resolution requests. Safe for regular matchmaking, but caution in strict tournament environments.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+        "valueName": "GlobalTimerResolutionRequests",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel",
+        "valueName": "GlobalTimerResolutionRequests",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    }
+  },
+  {
+    "id": "spectre_meltdown_disable",
+    "nameKey": "tweaks.advanced.spectreMeltdown.name",
+    "descriptionKey": "tweaks.advanced.spectreMeltdown.desc",
+    "category": "advanced",
+    "impact": "advanced",
+    "requiresReboot": true,
+    "warningKey": "tweaks.advanced.spectreMeltdown.warning",
+    "anticheat": "blocked-risk",
+    "anticheatNote": "Disables CPU vulnerability mitigations via FeatureSettingsOverride. Blocked under Competitive-Safe mode to prevent tournament bans and untrusted kernel integrity flags.",
+    "affectedAntiCheats": ["vanguard", "faceit", "eac", "battleye"],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+        "valueName": "FeatureSettingsOverride",
+        "valueType": "REG_DWORD",
+        "applyValue": 3,
+        "revertValue": 0
+      },
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+        "valueName": "FeatureSettingsOverrideMask",
+        "valueType": "REG_DWORD",
+        "applyValue": 3,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+        "valueName": "FeatureSettingsOverride",
+        "valueType": "REG_DWORD",
+        "applyValue": 3,
+        "revertValue": 0
+      }
+    }
+  }
+]

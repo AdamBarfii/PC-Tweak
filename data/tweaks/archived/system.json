@@ -1,0 +1,70 @@
+[
+  {
+    "id": "disable_cortana",
+    "nameKey": "tweaks.system.disableCortana.name",
+    "descriptionKey": "tweaks.system.disableCortana.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": true,
+    "anticheat": "safe",
+    "anticheatNote": "Windows Search policy. Never touches game processes.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "valueName": "AllowCortana",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "valueName": "AllowCortana",
+        "valueType": "REG_DWORD",
+        "applyValue": 0,
+        "revertValue": 1
+      }
+    }
+  },
+  {
+    "id": "disable_web_search",
+    "nameKey": "tweaks.system.disableWebSearch.name",
+    "descriptionKey": "tweaks.system.disableWebSearch.desc",
+    "category": "system",
+    "impact": "safe",
+    "requiresReboot": false,
+    "anticheat": "safe",
+    "anticheatNote": "Explorer web search toggle. Never touches game processes.",
+    "affectedAntiCheats": [],
+    "actions": [
+      {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\Explorer",
+        "valueName": "DisableSearchBoxSuggestions",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    ],
+    "statusQuery": {
+      "type": "registry",
+      "checkAction": {
+        "type": "registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\Explorer",
+        "valueName": "DisableSearchBoxSuggestions",
+        "valueType": "REG_DWORD",
+        "applyValue": 1,
+        "revertValue": 0
+      }
+    }
+  }
+]
