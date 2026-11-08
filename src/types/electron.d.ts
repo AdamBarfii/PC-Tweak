@@ -1098,6 +1098,19 @@ export interface ElectronAPI {
   onOverclockTelemetry: (callback: (telemetry: OverclockTelemetry) => void) => () => void;
   onOverclockAutoScanStep: (callback: (step: AutoOverclockStep) => void) => () => void;
 
+  // AI Auto-Optimizer Suite
+  aiOptimizerScanAndPlan: () => Promise<AiOptimizationPlan>;
+  aiOptimizerExecute: (payload?: { actionIds?: string[] }) => Promise<{
+    success: boolean;
+    appliedCount: number;
+    reclaimedRamMb: number;
+    reclaimedDiskMb: number;
+    message: string;
+  }>;
+  aiOptimizerUndo: () => Promise<{ success: boolean; message: string }>;
+  aiOptimizerGetSnapshot: () => Promise<AiOptimizationSnapshot | null>;
+  onAiOptimizerProgress: (callback: (data: { step: string; percent: number }) => void) => () => void;
+
   // Events listener
   onMetricsUpdate: (callback: (metrics: SystemMetrics) => void) => () => void;
 }
@@ -1421,6 +1434,60 @@ export interface OverclockProfile {
   isStock: boolean;
   stabilityScore: number;
   createdAt: string;
+}
+
+// ----------------------------------------------------
+// AI Auto-Optimizer Types
+// ----------------------------------------------------
+export type AiHardwarePersona =
+  | 'esports_high_end'
+  | 'balanced_gaming'
+  | 'budget_memory_constrained'
+  | 'thermal_sensitive_laptop';
+
+export interface AiActionItem {
+  id: string;
+  category: 'gaming' | 'cpu' | 'memory' | 'storage' | 'telemetry' | 'network';
+  titleKey: string;
+  titleFallback: string;
+  descKey: string;
+  descFallback: string;
+  reasonKey: string;
+  reasonFallback: string;
+  impact: 'high' | 'moderate' | 'safe';
+  antiCheatSafe: boolean;
+  isRecommended: boolean;
+  isSelected: boolean;
+  executionType: 'tweak' | 'ram_trim' | 'disk_clean' | 'power_plan' | 'service_disable';
+  executionPayload?: any;
+}
+
+export interface AiOptimizationPlan {
+  currentScore: number;
+  projectedScore: number;
+  persona: AiHardwarePersona;
+  personaTitle: string;
+  personaDesc: string;
+  aiDiagnosis: string;
+  estimatedGains: {
+    fpsBoostPct: number;
+    latencyReductionMs: number;
+    ramReclaimMb: number;
+    diskReclaimMb: number;
+  };
+  actions: AiActionItem[];
+  generatedAt: string;
+}
+
+export interface AiOptimizationSnapshot {
+  appliedActionIds: string[];
+  appliedTweakIds: string[];
+  previousPowerPlanGuid?: string;
+  reclaimedRamMb: number;
+  reclaimedDiskMb: number;
+  appliedAt: string;
+  preOptimizationScore: number;
+  postOptimizationScore: number;
 }
 
 declare global {

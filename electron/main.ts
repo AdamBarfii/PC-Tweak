@@ -16,6 +16,7 @@ import { registerDiagnosticsIpc } from './ipc/diagnostics';
 import { registerOptimizerIpc } from './ipc/optimizer';
 import { registerAutomationIpc } from './ipc/automation';
 import { registerOverclockIpc } from './ipc/overclock';
+import { registerAiOptimizerIpc } from './ipc/aiOptimizer';
 import { AutomationEngine } from './engine/automationEngine';
 import { SettingsStore } from './storage/settingsStore';
 import { registerSettingsIpc, syncStartupSetting } from './ipc/settings';
@@ -741,6 +742,7 @@ app.whenReady().then(() => {
   registerOptimizerIpc();
   registerAutomationIpc();
   registerOverclockIpc();
+  registerAiOptimizerIpc();
   AutomationEngine.start();
 
   // Register settings IPC and sync startup preferences

@@ -52,15 +52,16 @@ import {
 import { ConfirmDialog } from '@/components/common/ConfirmDialog';
 import { Switch } from '@/components/common/Switch';
 import { PageLoadingState } from '@/components/common/PageLoadingState';
+import { AiAutoOptimizerSection } from '@/features/optimizer/components/AiAutoOptimizerSection';
 
-type OptimizerSubTab = 'ram' | 'disk' | 'services' | 'tasks' | 'cpu' | 'automation';
+type OptimizerSubTab = 'ai' | 'ram' | 'disk' | 'services' | 'tasks' | 'cpu' | 'automation';
 
 export const OptimizerView: React.FC = () => {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === 'fa';
   const { metrics, systemInfo } = useUIStore();
 
-  const [activeSubTab, setActiveSubTab] = useState<OptimizerSubTab>('ram');
+  const [activeSubTab, setActiveSubTab] = useState<OptimizerSubTab>('ai');
   const [isLoading, setIsLoading] = useState(true);
 
   // Status banners & feedback
@@ -128,6 +129,10 @@ export const OptimizerView: React.FC = () => {
    */
   const loadSubTabData = useCallback(
     async (tab: OptimizerSubTab, showSpinner = true) => {
+      if (tab === 'ai') {
+        setIsLoading(false);
+        return;
+      }
       if (showSpinner) setIsLoading(true);
       try {
         if (tab === 'ram') {
@@ -666,6 +671,20 @@ export const OptimizerView: React.FC = () => {
       <div className="flex items-center gap-2 p-1.5 rounded-xl bg-card/60 border border-white/10 backdrop-blur-md overflow-x-auto">
         <button
           type="button"
+          onClick={() => setActiveSubTab('ai')}
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer ${
+            activeSubTab === 'ai'
+              ? 'bg-gradient-to-r from-cyan-500/25 to-blue-600/25 text-cyan-300 border border-cyan-400/80 shadow-[0_0_15px_rgba(0,240,255,0.25)]'
+              : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.04] border border-transparent'
+          }`}
+        >
+          <Bot className="w-3.5 h-3.5 text-cyan-400" />
+          <span>{isRtl ? 'هوش مصنوعی' : 'AI Auto-Tune'}</span>
+          <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase bg-cyan-400 text-slate-950">AI</span>
+        </button>
+
+        <button
+          type="button"
           onClick={() => setActiveSubTab('ram')}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer ${
             activeSubTab === 'ram'
@@ -751,6 +770,16 @@ export const OptimizerView: React.FC = () => {
         />
       ) : (
         <>
+          {/* ==================== 0. AI AUTO-OPTIMIZER TAB ==================== */}
+          {activeSubTab === 'ai' && (
+            <AiAutoOptimizerSection
+              onNotify={(text, type) => setStatusBanner({ text, type })}
+              onTweakApplied={() => {
+                loadSubTabData(activeSubTab, false);
+              }}
+            />
+          )}
+
           {/* ==================== 1. RAM OPTIMIZER TAB ==================== */}
           {activeSubTab === 'ram' && (
             <div className="space-y-6">

@@ -346,4 +346,17 @@ contextBridge.exposeInMainWorld('electronAPI', {
       ipcRenderer.removeListener('metrics:update', subscription);
     };
   },
+
+  // AI Auto-Optimizer API
+  aiOptimizerScanAndPlan: () => ipcRenderer.invoke('aiOptimizer:scanAndPlan'),
+  aiOptimizerExecute: (payload?: { actionIds?: string[] }) => ipcRenderer.invoke('aiOptimizer:execute', payload),
+  aiOptimizerUndo: () => ipcRenderer.invoke('aiOptimizer:undo'),
+  aiOptimizerGetSnapshot: () => ipcRenderer.invoke('aiOptimizer:getSnapshot'),
+  onAiOptimizerProgress: (callback: (data: { step: string; percent: number }) => void) => {
+    const subscription = (_event: any, value: any) => callback(value);
+    ipcRenderer.on('aiOptimizer:progress', subscription);
+    return () => {
+      ipcRenderer.removeListener('aiOptimizer:progress', subscription);
+    };
+  },
 });

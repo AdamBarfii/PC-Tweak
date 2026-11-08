@@ -429,6 +429,7 @@
     "title": "System Optimizer",
     "subtitle": "Native optimization for RAM, Disk, Services, Scheduled Tasks, and CPU",
     "tabs": {
+      "ai": "AI Auto-Tune",
       "ram": "RAM & Memory",
       "disk": "Disk & Storage",
       "services": "Windows Services",
@@ -726,5 +727,20 @@
       "stockRestored": "Factory stock clock defaults restored.",
       "revertFailed": "Failed to restore stock."
     }
+  },
+  "aiOptimizer": {
+    "title": "AI Auto-Tweak & Intelligent Optimizer",
+    "subtitle": "Profiles CPU topology, GPU headroom, RAM load, and anti-cheats to generate and apply a tailored optimization plan in 1 click.",
+    "scanButton": "⚡ Run AI Diagnostic",
+    "scanning": "Deep Scanning...",
+    "applyButton": "⚡ Apply AI Auto-Tune",
+    "undoButton": "Undo AI Tweaks",
+    "scoreTitle": "System Performance Score",
+    "current": "Current",
+    "optimized": "AI Optimized",
+    "recommendationsTitle": "Recommended Optimizations",
+    "selectAll": "Select All",
+    "clearAll": "Clear All",
+    "restorePointNotice": "A Windows System Restore Point is automatically created prior to optimization."
   }
 }
