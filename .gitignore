@@ -4,6 +4,7 @@ node_modules/
 .pnp.js
 
 # Build outputs
+target/
 dist/
 dist-electron/
 release/

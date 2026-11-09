@@ -1,0 +1,16 @@
+[package]
+name = "pctweak-win32"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[target.'cfg(windows)'.dependencies.windows-sys]
+workspace = true
+
+[dev-dependencies]
+tempfile = { workspace = true }

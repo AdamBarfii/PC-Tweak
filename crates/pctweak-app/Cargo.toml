@@ -1,0 +1,31 @@
+[package]
+name = "pctweak-app"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+pctweak-core = { workspace = true }
+pctweak-win32 = { workspace = true }
+pctweak-gpu = { workspace = true }
+pctweak-rawinput = { workspace = true }
+pctweak-network = { workspace = true }
+pctweak-diagnostics = { workspace = true }
+pctweak-optimizer = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+chrono = { workspace = true }
+
+[target.'cfg(windows)'.dependencies.windows-sys]
+workspace = true
+features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Graphics_Gdi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_System_Threading",
+    "Win32_System_LibraryLoader",
+]

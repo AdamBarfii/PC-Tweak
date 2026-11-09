@@ -1,0 +1,76 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/pctweak-core",
+    "crates/pctweak-win32",
+    "crates/pctweak-gpu",
+    "crates/pctweak-rawinput",
+    "crates/pctweak-network",
+    "crates/pctweak-diagnostics",
+    "crates/pctweak-optimizer",
+    "crates/pctweak-app",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["PC Tweak Team"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/pctweak/pctweak-rust"
+
+[workspace.dependencies]
+# Internal Workspace Crates
+pctweak-core = { path = "crates/pctweak-core" }
+pctweak-win32 = { path = "crates/pctweak-win32" }
+pctweak-gpu = { path = "crates/pctweak-gpu" }
+pctweak-rawinput = { path = "crates/pctweak-rawinput" }
+pctweak-network = { path = "crates/pctweak-network" }
+pctweak-diagnostics = { path = "crates/pctweak-diagnostics" }
+pctweak-optimizer = { path = "crates/pctweak-optimizer" }
+
+# Serialization & Data
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Error Handling & Utilities
+thiserror = "2.0"
+uuid = { version = "=1.10.0", features = ["v4", "serde"] }
+chrono = { version = "=0.4.38", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Low-Level Win32 & Dynamic Linking
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Registry",
+    "Win32_System_Services",
+    "Win32_System_Threading",
+    "Win32_System_SystemInformation",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Performance",
+    "Win32_System_LibraryLoader",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Media_Multimedia",
+] }
+libloading = "=0.8.5"
+
+# Concurrency & Async
+tokio = { version = "=1.38.1", features = ["full"] }
+
+# Testing & Hermetic Isolation
+tempfile = "=3.12.0"
+
+# Optimization Profiles
+[profile.release]
+opt-level = "z"         # Optimize for minimal binary size
+lto = "fat"             # Aggressive link-time optimization across all crates
+codegen-units = 1       # Maximum dead-code elimination and inlining
+panic = "abort"         # Removes stack unwinding tables for smaller binary size
+strip = "symbols"       # Strips debug symbols from production executable
+
+[profile.bench]
+opt-level = 3
+lto = "fat"

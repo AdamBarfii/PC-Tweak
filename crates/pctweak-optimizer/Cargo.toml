@@ -1,0 +1,22 @@
+[package]
+name = "pctweak-optimizer"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+pctweak-core = { workspace = true }
+pctweak-win32 = { workspace = true }
+pctweak-diagnostics = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+chrono = { workspace = true }
+
+[target.'cfg(windows)'.dependencies.windows-sys]
+workspace = true
+
+[dev-dependencies]
+tempfile = { workspace = true }
